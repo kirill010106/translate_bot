@@ -1,0 +1,5 @@
+requests
+environs
+redis
+aiogram
+aiogram-dialog

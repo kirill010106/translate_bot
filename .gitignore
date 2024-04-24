@@ -1,0 +1,7 @@
+.env
+amvera.yml
+**/__pycache__/
+**/.idea/
+history.txt
+users.db
+__pycache__/

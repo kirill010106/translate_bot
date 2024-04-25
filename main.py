@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-
+from aiogram_dialog import setup_dialogs
 from config_data.config import load_config
 from aiogram.fsm.storage.redis import RedisStorage, Redis
 import handlers.handlers
@@ -19,6 +19,7 @@ async def main():
     bot = Bot(token=config.tg_bot.token)
     dp = Dispatcher()
     dp.include_router(handlers.handlers.router)
+    setup_dialogs(dp)
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)

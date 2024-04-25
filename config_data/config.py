@@ -10,6 +10,7 @@ class TgBot:
 class TranslateApi:
     token: str
     folder: str
+    oauth: str
 
 
 @dataclass
@@ -28,6 +29,7 @@ def load_config(path: str | None = None) -> Config:
         ),
         translate_api=TranslateApi(
             token=env("IAM_TOKEN"),
-            folder=env("folder_id")
+            folder=env("folder_id"),
+            oauth=env("OAUTH_TOKEN")
         )
     )

@@ -1,0 +1,11 @@
+from aiogram.filters.state import StatesGroup, State
+
+
+class UserState(StatesGroup):
+    main = State()
+    set_from_lang = State()
+    set_to_lang = State()
+    done = State()
+
+class Demo(StatesGroup):
+    main = State()

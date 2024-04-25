@@ -4,8 +4,9 @@ import requests
 from config_data.config import load_config
 import os
 config = load_config()
-oauth_token = "y0_AgAAAAAN-M2-AATuwQAAAAEC5tJBAABCzcSrt5BMYqqiwGIRIyx0fqEztw"
+oauth_token = config.translate_api.oauth
 folder_id = config.translate_api.folder
+
 
 def create_iam_token(oauth_token):
     params = {'yandexPassportOauthToken': oauth_token}
@@ -55,7 +56,12 @@ def get_languages_list(folder):
         code = str(el.get("code"))
         name = el.get("name")
         res.append({code: name})
-    return res
+    for x in res:
+        for key in x:
+            a = key
+            b = x[key]
+            with open("languages.txt", "a+") as f:
+                f.write(f"{a}:{b}\n")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 
 def compare_language(lang: str):
     if lang == "default":
-        return "Автоопределение"
-    with open("/home/kirill/PycharmProjects/translateBot/languages.txt") as f:
+        return "По умолчанию"
+    with open("./languages.txt") as f:
         a = [i.strip() for i in f]
         for x in a:
             el = x.split(":")
@@ -12,7 +12,7 @@ def compare_language(lang: str):
 
 def get_list():
     st = ""
-    with open("/home/kirill/PycharmProjects/translateBot/languages.txt") as f:
+    with open("./languages.txt") as f:
         a = [i for i in f]
         for x in a:
             st += x

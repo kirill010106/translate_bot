@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf4e482c-e4b3-4f48-bbe1-945c963496dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translate_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/translate_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/compare_language.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/compare_language.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     &quot;Python.translate_api.executor&quot;: &quot;Run&quot;,
     &quot;Python.windows.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/kirill/PycharmProjects/translateBot/main.py&quot;
   }
 }</component>

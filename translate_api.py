@@ -22,6 +22,8 @@ folder_id = config.translate_api.folder
 
 
 def translate_text(texts: list[str], source_language: str, target_language: str = None, speller=True) -> requests.Response.text:
+    if target_language == "default":
+        return "Язык перевода ещё не задан:("
     if source_language == "default":
         src = None
     else:

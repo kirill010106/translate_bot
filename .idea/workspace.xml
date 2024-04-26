@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf4e482c-e4b3-4f48-bbe1-945c963496dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dialogs/dialogs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql_cursor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/windows.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translated_text_buffer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/compare_language.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_data/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_data/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dialogs/dialogs.py" beforeDir="false" afterPath="$PROJECT_DIR$/dialogs/dialogs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_cursor.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_cursor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/states/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states/states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translate_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/translate_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/windows.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.venv/lib/python3.10/site-packages/aiogram_dialog/widgets/input/base.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -39,17 +41,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.main.executor": "Run",
-    "Python.run bot.executor": "Run",
-    "Python.sql_cursor.executor": "Run",
-    "Python.translate_api.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/kirill/PycharmProjects/translateBot/main.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.compare_language.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run bot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sql_cursor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.translate_api.executor&quot;: &quot;Run&quot;,
+    &quot;Python.windows.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kirill/PycharmProjects/translateBot/main.py&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />

@@ -21,8 +21,13 @@ IAM_TOKEN = create_iam_token(oauth_token)
 folder_id = config.translate_api.folder
 
 
-def translate_text(texts: list[str], target_language: str, speller=True) -> requests.Response.text:
+def translate_text(texts: list[str], source_language: str, target_language: str = None, speller=True) -> requests.Response.text:
+    if source_language == "default":
+        src = None
+    else:
+        src = source_language
     body = {
+        "sourceLanguageCode": src,
         "targetLanguageCode": target_language,
         "texts": texts,
         "folderId": folder_id,
@@ -38,7 +43,10 @@ def translate_text(texts: list[str], target_language: str, speller=True) -> requ
                              json=body,
                              headers=headers
                              )
-    return response.text
+    decode_response = response.content.decode('UTF-8')
+    text = json.loads(decode_response)
+    text = text["translations"][0]["text"]
+    return text
 
 
 def get_languages_list(folder):
@@ -66,4 +74,4 @@ def get_languages_list(folder):
 
 if __name__ == "__main__":
 
-    print(get_languages_list(folder_id))
+    print(translate_text("атака", "ru", "en"))

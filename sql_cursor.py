@@ -92,6 +92,6 @@ cur.execute(
 #     f"UPDATE Users SET selected_from_language = 'ru' WHERE user_id = '920909140'"
 # )
 # cur.execute("SELECT * FROM Users")
-print(cur.fetchall())
+# print(cur.fetchall())
 db.commit()
 db.close()

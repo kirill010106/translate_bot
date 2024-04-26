@@ -8,6 +8,7 @@ from aiogram.fsm.storage.redis import RedisStorage, Redis
 import handlers.handlers
 redis = Redis(host="localhost")
 
+
 async def main():
     logging.basicConfig(
         level=logging.INFO,

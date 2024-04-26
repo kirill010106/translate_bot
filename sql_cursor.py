@@ -73,6 +73,31 @@ def read_user_info(user_id):
     db.close()
     return res
 
+def dump_all_db():
+    db = sqlite3.connect("users.db")
+    cur = db.cursor()
+    cur.execute(
+        "SELECT * FROM Users"
+    )
+    res = cur.fetchall()
+    db.close()
+    return res
+
+def swap_user_languages(user_id):
+    db = sqlite3.connect("users.db")
+    cur = db.cursor()
+    cur.execute("""
+    SELECT selected_from_language FROM Users WHERE user_id = ?
+    """, (user_id,))
+    from_lang = cur.fetchone()[0]
+    cur.execute("""
+        SELECT selected_to_language FROM Users WHERE user_id = ?
+        """, (user_id,))
+    to_lang = cur.fetchone()[0]
+    cur.execute("UPDATE Users SET selected_from_language = ? WHERE user_id = ?", (to_lang, user_id))
+    cur.execute("  UPDATE Users SET selected_to_language = ? WHERE user_id = ?", (from_lang, user_id))
+    db.commit()
+    db.close()
 
 cur.execute(
     """

@@ -10,6 +10,17 @@ def compare_language(lang: str):
                 return el[1]
         return "Язык не опознан."
 
+
+def get_lang_keys():
+    with open("./languages.txt") as f:
+        a = [i.strip() for i in f]
+        keys = []
+        for x in a:
+            el = x.split(":")
+            keys.append(el[0])
+    return keys
+
+
 def get_list():
     st = ""
     with open("./languages.txt") as f:

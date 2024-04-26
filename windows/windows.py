@@ -8,10 +8,11 @@ from states.states import UserState
 from aiogram_dialog import Window, DialogManager
 from aiogram_dialog.widgets.kbd import Button, SwitchTo, Cancel
 from aiogram_dialog.widgets.text import Const, Format
-from sql_cursor import read_user_language, write_user_language
+from sql_cursor import read_user_language, write_user_language, swap_user_languages
 from utils.compare_language import compare_language, get_list
 from translate_api import translate_text
 from translated_text_buffer import buffer
+
 
 async def get_user_info(dialog_manager: DialogManager, **kwargs):
     return {
@@ -19,6 +20,12 @@ async def get_user_info(dialog_manager: DialogManager, **kwargs):
         "to_id": compare_language(read_user_language(dialog_manager.event.from_user.id, "to")),
         # "from_language_code": dialog_manager.event.from_user.text
     }
+
+
+async def swap_languages(callback: types.CallbackQuery, button: Button, dialog_manager: DialogManager):
+    user_id = dialog_manager.event.from_user.id
+    swap_user_languages(user_id)
+    await dialog_manager.start(UserState.main)
 
 
 main_window = Window(
@@ -29,6 +36,7 @@ main_window = Window(
     SwitchTo(Const("Приступить к переводу"), id="start_translate", state=UserState.text_input),
     SwitchTo(Const("Выбрать исходный язык"), id="from_language_set", state=UserState.set_from_lang),
     SwitchTo(Const("Выбрать язык переведённого текста"), id="to_language_set", state=UserState.set_to_lang),
+    Button(Format("Поменять языки местами"), id="swap_languages", on_click=swap_languages),
     SwitchTo(Const("Список языков"), id="language_list", state=UserState.language_list),
     getter=get_user_info,
     state=UserState.main,

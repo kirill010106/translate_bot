@@ -1,4 +1,6 @@
 import json
+import logging
+
 from utils.compare_language import get_lang_keys
 import requests
 from config_data.config import load_config
@@ -12,6 +14,7 @@ folder_id = config.translate_api.folder
 def create_iam_token(oauth_token):
     params = {'yandexPassportOauthToken': oauth_token}
     response = requests.post('https://iam.api.cloud.yandex.net/iam/v1/tokens', params=params)
+    print(response.text)
     decode_response = response.content.decode('UTF-8')
     text = json.loads(decode_response)
     iam_token = text.get('iamToken')
@@ -50,8 +53,12 @@ def translate_text(texts: list[str], source_language: str, target_language: str 
                              )
     decode_response = response.content.decode('UTF-8')
     text = json.loads(decode_response)
-    text = text["translations"][0]["text"]
+    try:
+        text = text["translations"][0]["text"]
+    except Exception:
+        return "Ошибка перевода. Возможно, устарел токен."
     return text
+
 
 
 def get_languages_list(folder):

@@ -60,10 +60,11 @@ def translate_text(texts: list[str], source_language: str, target_language: str 
 
 
 def get_languages_list(folder):
+    iam_token = create_iam_token(oauth_token)
     params = {'folderId': folder}
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer {0}".format(IAM_TOKEN)
+        "Authorization": "Bearer {0}".format(iam_token)
     }
     response = requests.post('https://translate.api.cloud.yandex.net/translate/v2/languages', params=params,
                              headers=headers)
@@ -81,5 +82,3 @@ def get_languages_list(folder):
             b = x[key]
             with open("languages.txt", "a+") as f:
                 f.write(f"{a}:{b}\n")
-
-# print(translate_text("hello", "en", "ru"))

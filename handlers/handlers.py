@@ -6,8 +6,7 @@ from config_data.config import load_config
 from states.states import UserState
 from dialogs.dialogs import main_dialog
 from aiogram_dialog import DialogManager, StartMode, ShowMode
-from sql_cursor import write_new_user, read_user_info, dump_all_db
-from aiogram_dialog.api.exceptions import UnknownIntent
+from sql_cursor import write_new_user, dump_all_db
 
 router = Router()
 router.include_router(main_dialog)

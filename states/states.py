@@ -9,6 +9,3 @@ class UserState(StatesGroup):
     text_input = State()
     done = State()
     reload = State()
-
-class Demo(StatesGroup):
-    main = State()

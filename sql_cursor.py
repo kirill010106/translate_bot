@@ -73,6 +73,7 @@ def read_user_info(user_id):
     db.close()
     return res
 
+
 def dump_all_db():
     db = sqlite3.connect("users.db")
     cur = db.cursor()
@@ -82,6 +83,7 @@ def dump_all_db():
     res = cur.fetchall()
     db.close()
     return res
+
 
 def swap_user_languages(user_id):
     db = sqlite3.connect("users.db")

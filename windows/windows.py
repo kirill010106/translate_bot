@@ -27,6 +27,11 @@ async def swap_languages(callback: types.CallbackQuery, button: Button, dialog_m
     swap_user_languages(user_id)
     await dialog_manager.start(UserState.main)
 
+reload_window = Window(
+    Const("Бот был перезапущен. Для возврата в главное меню воспользуйтесь кнопкой."),
+    SwitchTo(Const("Перейти в главное меню"), state=UserState.main, id="back_to_menu_from_reload"),
+    state=UserState.reload
+)
 
 main_window = Window(
     Const(
@@ -46,14 +51,12 @@ main_window = Window(
 
 async def handle_and_back_to_menu(message: types.Message, widget: MessageInput, dialog_manager: DialogManager):
     dialog_manager.dialog_data["from_lang"] = message.text
-    logging.info(f"{message.text}")
     write_user_language(dialog_manager.event.from_user.id, dialog_manager.dialog_data["from_lang"], "from")
     await dialog_manager.back()
 
 
 async def handle_and_back_to_menu_to(message: types.Message, widget: MessageInput, dialog_manager: DialogManager):
     dialog_manager.dialog_data["to_lang"] = message.text
-    logging.info(f"{message.text}")
     write_user_language(dialog_manager.event.from_user.id, dialog_manager.dialog_data["to_lang"], "to")
     await dialog_manager.start(UserState.main)
 

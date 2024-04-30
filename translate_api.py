@@ -14,7 +14,6 @@ folder_id = config.translate_api.folder
 def create_iam_token(oauth_token):
     params = {'yandexPassportOauthToken': oauth_token}
     response = requests.post('https://iam.api.cloud.yandex.net/iam/v1/tokens', params=params)
-    print(response.text)
     decode_response = response.content.decode('UTF-8')
     text = json.loads(decode_response)
     iam_token = text.get('iamToken')
@@ -22,12 +21,12 @@ def create_iam_token(oauth_token):
 
 
 config = load_config()
-IAM_TOKEN = create_iam_token(oauth_token)
 folder_id = config.translate_api.folder
 
 
 def translate_text(texts: list[str], source_language: str, target_language: str = None, speller=True) -> (requests.
                                                                                                         Response.text):
+    iam_token = create_iam_token(oauth_token)
     if target_language == "default" or source_language not in get_lang_keys():
         return "Язык перевода не определён:("
     if source_language == "default":
@@ -44,7 +43,7 @@ def translate_text(texts: list[str], source_language: str, target_language: str 
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer {0}".format(IAM_TOKEN)
+        "Authorization": "Bearer {0}".format(iam_token)
     }
 
     response = requests.post('https://translate.api.cloud.yandex.net/translate/v2/translate',
@@ -58,7 +57,6 @@ def translate_text(texts: list[str], source_language: str, target_language: str 
     except Exception:
         return "Ошибка перевода. Возможно, устарел токен."
     return text
-
 
 
 def get_languages_list(folder):
@@ -83,3 +81,5 @@ def get_languages_list(folder):
             b = x[key]
             with open("languages.txt", "a+") as f:
                 f.write(f"{a}:{b}\n")
+
+# print(translate_text("hello", "en", "ru"))

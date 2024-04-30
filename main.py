@@ -2,7 +2,10 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.filters import ExceptionTypeFilter
 from aiogram_dialog import setup_dialogs
+from aiogram_dialog.api.exceptions import UnknownIntent
+
 from config_data.config import load_config
 from aiogram.fsm.storage.redis import RedisStorage, Redis
 import handlers.handlers
@@ -20,6 +23,10 @@ async def main():
     bot = Bot(token=config.tg_bot.token)
     dp = Dispatcher()
     dp.include_router(handlers.handlers.router)
+    dp.errors.register(
+        handlers.handlers.on_unknown_intent,
+        ExceptionTypeFilter(UnknownIntent),
+    )
     setup_dialogs(dp)
 
     await bot.delete_webhook(drop_pending_updates=True)

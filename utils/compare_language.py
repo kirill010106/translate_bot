@@ -2,7 +2,7 @@
 def compare_language(lang: str):
     if lang == "default":
         return "По умолчанию"
-    with open("./languages.txt") as f:
+    with open("./languages.txt", encoding="utf-8") as f:
         a = [i.strip() for i in f]
         for x in a:
             el = x.split(":")
@@ -12,7 +12,7 @@ def compare_language(lang: str):
 
 
 def get_lang_keys():
-    with open("./languages.txt") as f:
+    with open("./languages.txt", encoding="utf-8") as f:
         a = [i.strip() for i in f]
         keys = []
         for x in a:
@@ -23,7 +23,7 @@ def get_lang_keys():
 
 def get_list():
     st = ""
-    with open("./languages.txt") as f:
+    with open("./languages.txt", encoding="utf-8") as f:
         a = [i for i in f]
         for x in a:
             st += x

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf4e482c-e4b3-4f48-bbe1-945c963496dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translate_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/translate_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translated_text_buffer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/compare_language.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/compare_language.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/windows/windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/windows/windows.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,18 +55,6 @@
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
   }
 }</component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
-        <option name="reportGuid" value="79cddd62-fb67-4ab2-afc2-d501e0f5b932" />
-        <option name="reportName" value="translateBot/qodana/2024-05-03" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="79cddd62-fb67-4ab2-afc2-d501e0f5b932" reportId="translateBot/qodana/2024-05-03" />

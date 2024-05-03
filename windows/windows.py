@@ -1,5 +1,3 @@
-import logging
-
 from aiogram import types
 from aiogram_dialog.widgets.input import MessageInput
 
@@ -11,14 +9,11 @@ from aiogram_dialog.widgets.text import Const, Format
 from sql_cursor import read_user_language, write_user_language, swap_user_languages
 from utils.compare_language import compare_language, get_list
 from translate_api import translate_text
-from translated_text_buffer import buffer
-
 
 async def get_user_info(dialog_manager: DialogManager, **kwargs):
     return {
         "from_id": compare_language(read_user_language(dialog_manager.event.from_user.id, "from")),
         "to_id": compare_language(read_user_language(dialog_manager.event.from_user.id, "to")),
-        # "from_language_code": dialog_manager.event.from_user.text
     }
 
 
@@ -35,7 +30,7 @@ reload_window = Window(
 
 main_window = Window(
     Const(
-        "Добро пожаловать! Этот бот поможет вам с переводом текста. Выберите исходный язык, либо система распознает его автоматически"),
+        "Добро пожаловать! Этот бот поможет вам с переводом текста. Задайте нужные языки."),
     Format("Текущий исходный язык: {from_id}"),
     Format("Результат будет на языке: {to_id}"),
     SwitchTo(Const("Приступить к переводу"), id="start_translate", state=UserState.text_input),
@@ -90,12 +85,12 @@ async def text_to_translate_handler(message: types.Message, widget: MessageInput
                                                                    read_user_language(dialog_manager.event.from_user.id,
                                                                                       "to"))
     buffer[dialog_manager.event.from_user.id] = dialog_manager.dialog_data["translated_text"]
-    await dialog_manager.start(UserState.done)
+    await dialog_manager.switch_to(UserState.done)
 
 
 async def text_getter(dialog_manager: DialogManager, **kwargs):
     return {
-        "translated_text":  buffer.get(dialog_manager.event.from_user.id)
+        "translated_text":  dialog_manager.dialog_data["translated_text"]
     }
 
 

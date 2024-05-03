@@ -85,8 +85,10 @@ language_list = Window(
 async def text_to_translate_handler(message: types.Message, widget: MessageInput, dialog_manager: DialogManager):
     dialog_manager.dialog_data["text_to_translate"] = message.text,
     dialog_manager.dialog_data["translated_text"] = translate_text(dialog_manager.dialog_data["text_to_translate"],
-                                                                   read_user_language(dialog_manager.event.from_user.id, "from"),
-                                                                   read_user_language(dialog_manager.event.from_user.id, "to"))
+                                                                   read_user_language(dialog_manager.event.from_user.id,
+                                                                                      "from"),
+                                                                   read_user_language(dialog_manager.event.from_user.id,
+                                                                                      "to"))
     buffer[dialog_manager.event.from_user.id] = dialog_manager.dialog_data["translated_text"]
     await dialog_manager.start(UserState.done)
 

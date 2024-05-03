@@ -1,18 +1,15 @@
 import json
-import logging
-
 from utils.compare_language import get_lang_keys
 import requests
 from config_data.config import load_config
-import os
 
 config = load_config()
 oauth_token = config.translate_api.oauth
 folder_id = config.translate_api.folder
 
 
-def create_iam_token(oauth_token):
-    params = {'yandexPassportOauthToken': oauth_token}
+def create_iam_token(oauth):
+    params = {'yandexPassportOauthToken': oauth}
     response = requests.post('https://iam.api.cloud.yandex.net/iam/v1/tokens', params=params)
     decode_response = response.content.decode('UTF-8')
     text = json.loads(decode_response)
@@ -21,11 +18,10 @@ def create_iam_token(oauth_token):
 
 
 config = load_config()
-folder_id = config.translate_api.folder
 
 
-def translate_text(texts: list[str], source_language: str, target_language: str = None, speller=True) -> (requests.
-                                                                                                        Response.text):
+def translate_text(texts: list[str], source_language: str, target_language: str = None, speller=True)\
+        -> requests.Response.text:
     iam_token = create_iam_token(oauth_token)
     if target_language == "default" or source_language not in get_lang_keys():
         return "Язык перевода не определён:("
@@ -54,7 +50,7 @@ def translate_text(texts: list[str], source_language: str, target_language: str 
     text = json.loads(decode_response)
     try:
         text = text["translations"][0]["text"]
-    except Exception:
+    except KeyError:
         return "Ошибка перевода. Возможно, устарел токен."
     return text
 

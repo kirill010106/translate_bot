@@ -84,7 +84,6 @@ async def text_to_translate_handler(message: types.Message, widget: MessageInput
                                                                                       "from"),
                                                                    read_user_language(dialog_manager.event.from_user.id,
                                                                                       "to"))
-    buffer[dialog_manager.event.from_user.id] = dialog_manager.dialog_data["translated_text"]
     await dialog_manager.switch_to(UserState.done)
 
 
